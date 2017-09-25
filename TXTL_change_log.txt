@@ -1,0 +1,7 @@
+TX-TL subroutines change log
+Miroslav Gasparek
+Subroutine: txtl_setup_new_protein_added.m
+Line
+%% Amended by Miroslav Gasparek on 10 September 2017
+% speciesNames = erase(speciesNames,'int.')
+%%

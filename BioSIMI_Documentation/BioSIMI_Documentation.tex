@@ -1,0 +1,116 @@
+\documentclass{article}
+
+\title{\textbf{Documentation and User Manual for BioSIMI modeling framework}}
+\date{30 August 2017}
+\author{Miroslav Gasparek, Imperial College London \\ Professor Richard M. Murray, California Institute of Technology \\ Vipul Singhal, California Institute of Technology}
+
+
+
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{geometry}
+\geometry{textwidth=475pt}
+
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+\usepackage{courier}
+
+\begin{document}
+
+\begin{titlingpage}
+
+\end{titlingpage}
+	
+	\pagenumbering{gobble}
+	\maketitle
+	\newpage
+	\pagenumbering{arabic}
+
+	\section*{1. Introduction}
+	The purpose of this document is to provide documentation and user guide to BioSIMI, which stands for \textbf{\textit{Biomolecular Subsystems Interconnection Modeling Instrument}}. The aim of this MATLAB-based framework is to provide tool for rapid development and analysis of complex biomolecular circuits and systems arising from interconnection of modular subsystems, while accounting for phenomena related to interconnection of biomolecular subsystems, such as retroactivity and competition for resources. By providing the tools for fast assembly and analysis of interconnected synthetic biomolecular circuits with emphasis on analysis of Input/Output behavior of the whole system, BioSIMI aims to contribute to effort in building of genetically-engineered non-living artifical cells. 
+\\
+BioSIMI is based on MATLAB SimBiology toolbox which facilitates modeling and simulations of chemical reactions between species, which form basics of every biomolecular circuit. However, SimBiology module does not enable sufficiently fast modeling of more complex biomolecular systems, such as those that would be used in the design process of an artificial cell. 
+\\ BioSIMI also aims to be compatible with a set of tools for cell-free synthetic biology developed by Professor Murray\textquotesingle s group and other groups over last 5-10 years \cite{artificial}, especially with TX-TL modeling toolbox [citation needed] and with TX-TL method for implementing circuits and pathways \textit{in vitro}
+\\
+To conclude I hope that you will find this tool interesting and functional. If you have any suggestions, notes, and comments, please do not hesitate to contact authors at \texttt{miroslav.gasparek15@imperial.ac.uk}.
+\\	
+	\section*{2. What is artificial cell?}
+The focus of the module is to enable fast analysis of behavior of artificial cells. So what is an artificial cell? This is a difficult question and there is not a single answer to it. One way to answer it is to draw analogy between living and artificial cell by implementing some of the defining features of living cells in artificially created biomolecular systems - which we will call, (very courageously!) artificial cells. These features of living cells include [citation needed]: 
+\\
+\\ - \textit{Homeostasis}
+\\ - \textit{Structural organization}
+\\ - \textit{Metabolism}
+\\ - \textit{Growth}
+\\ - \textit{Adaptation to the surrounding environment}
+\\ - \textit{Ability to respond to environmental stimuli}
+\\ - \textit{Reproduction}
+\\
+\\
+Minimalistic model of an artificial cell can be represented by a set of biomolecular systems.
+\\
+	\section*{3. How to use BioSIMI}
+The BioSIMI modeling framework provides functions and subroutines allowing user to create SimBiology objects (species, reactions, rules...) using a set of pre-defined subsystems required for functioning of a cell. These subsystems can include transport systems (such as diffusion through the cell membrane), signaling pathways (Double-Phosphorylation signaling pathway, MAPK pathway) or computational/regulatory pathways (Incoherent Feed-Forward Loop, Genetic Toggle Switch) or metabolic systems. Subsystems (belonging to the class of pre-defined types) can be created, added to the model, and connected in several lines of commands in MATLAB.
+\\
+
+\textbf{1. Creation of a mathematical model of simple artificial cell} consisting of set of subsystems performing functions that are characteristic to living cell. These include sensing, signaling, regulation/computation, and the effect of metabolism.\\
+\textbf{2. Analytical and computational investigation of the artificial cell model}, as the system accepting external input (i.e. extrinsic signaling molecule) and producing the corresponding output (i.e. specific protein or reporter protein).\\
+\textbf{3. Optimization of intrinsic processes in the sensing, signaling and regulatory subsystems} so that desired system behavior (in terms of required transfer function from input to output, robustness, and stability) is achieved.\\ \\
+Modeling, analysis and simulations are specific to each of the objectives: \\
+\textbf{1. Creation of a mathematical model of simple artificial cell} will encompass selection of appropriate cell subsystems enabling it to perform desired function of the artificial cell. This includes sensing of extrinsic signaling molecule, membrane receptor binding of the signaling molecule, signaling pathway from the artificial cell membrane to intracellular DNA circuit, binding to promoter region and transcription into mRNA, translation into desired protein at ribosome binding sites, and finally, export of the protein out of the artificial cell.\\
+\textbf{2. Analytical and computational investigation of the artificial cell model} will include mathematical description of the subsystems and their mutual interactions, using established methods, such as those described in \cite{biofeedback}. System will be first analyzed theoretically in general terms, and as many conclusions about its behavior will be drawn through approaches described in \cite{biofeedback}, \cite{strogatz}, \cite{slotine}. The goal of such analysis is to find the output of the system (concentration of the target protein or reporter) as a function of the input (extrinsic signaling molecule) and internal system parameters. \\
+Subsequently, specific systems will be simulated in silico and information drawn from the theoretical analysis will be verified.\\
+\textbf{3. Optimization of intrinsic processes in the sensing, signaling and regulatory subsystems} will require theoretical and computational analysis of designed artificial cell and manipulation of the parameters of sensing, signaling and regulatory subsystems, so that their interconnection produces required output corresponding to appropriate input. Using methods described in \cite{biofeedback} and mathematical framework provided in \cite{artificial}, this optimization also aims to consider and address realistic imperfections in the artificial cell model, such as retroactivity, random noise, and competition for resources if multiple genetic circuits are present in the artificial cells. This should result into design of robust and stable biomolecular system.
+\\
+\\
+The product of successful research project will be a realistic model of simple artificial cell composed of fine-tuned functional subsystems providing measurable response to the input signal, based on the features of desired output. It will also demonstrate optimal robustness to the retroactivity, effect of limited resources, and perturbation.
+\pagebreak
+	\section*{3. Subroutines}
+\textbf{1. Creation of a mathematical model of simple artificial cell}\\
+Initially, the model of artificial cell will be treated as deterministic single input-single output model with dynamics defined by chemical reactions between individual parts and subsystems modelled by deterministic reaction rate equations.\\
+\textit{Sensing and signal transduction:} Binding of the extrinsic signaling molecule (input) to the membrane-bound receptor of artificial cell and subsequent signal transduction to the genetic circuit in the nucleus will be lumped together and modelled as MAPK cascade \cite{biofeedback}, \cite{alberts}. Dynamics of the process will be described by set of ordinary differential equations.\\
+\textit{Regulation/Computation:} Activated output of intracellular signaling pathway binds to promoter/operator region of the DNA and regulates the transcription of DNA into mRNA and thus subsequent production of the protein. Implemented gene circuits can range from simple activator action, through various logic functions and oscillators.\\
+\textit{Export:} Export of the substances will be modelled through exocytosis of the produced protein, which would represent the final output. Alternatively, if this would not be feasible, output can be measured as concentration of the suitable reporter protein.\\ \\ \\
+\textbf{2. Analytical and computational investigation of the artificial cell model}\\ 
+The proposed model will be described by reaction rate equations with parameters chosen from sources such as \textit{BioNumbers} \cite{bionumbers} to represent biologically plausible scenario. Variety of methods from fields of nonlinear dynamics (such as stability analysis and timescale separation \cite{biofeedback}, \cite{strogatz}) and control theory (Laplace transform for linear systems and describing functions for nonlinear systems \cite{slotine}).
+In silico simulations will be performed in Matlab (with which I have most experience) or another appropriate software as suggested.\\
+\textbf{3. Optimization of intrinsic processes in the sensing, signaling and regulatory subsystems}\\ Analysis of perturbation due to parameter sensitivity will be performed and its effect on transfer function of the system will be investigated. \\
+In terms of interconnection of components, the effects of retroactivity in sensing and signaling MAPK cascade and in gene circuits will be investigated and design approaches such as use of high-gain feedback will be employed \cite{biofeedback}. \\
+Competition for the resources, such as ATP required for phosphorylation or mRNA will be modelled as in \cite{biofeedback}. Finally, if time constraints will permit, analysis of random processes in frequency domain for deterministic linear processes in sensing, signaling and regulatory/computational subsystems will be performed and their overall effect on the output signal will be examined, along with options of minimizing detrimental effect of the noise (such as low-pass filtering) \cite{biofeedback}. However, I am aware that I will need to acquire competency in modeling of the processes described in this section, which is something that I would like to do before the start of my research placement.
+\\
+\\
+Accomplishment of objectives 1 and 2 should take approximately four weeks, while work towards accomplishment of objective 3 will be distributed throughout following six weeks of the internship. 
+\\
+\\
+From my perspective, the most difficult steps include those leading to accomplishment of objective 3, especially perturbation analysis, retroactivity attenuation, and stochastic modeling. I have been introduced into these topics through self-studying of \cite{biofeedback}, \cite{strogatz} and \cite{slotine}. Although I have not had experiences with simulation of such processes, I am willing to acquire such experiences through practicing exercises in \cite{biofeedback} and other recommended sources, so that I am prepared for such tasks adequately prior to the start of my internship. \\
+The resources required to conduct the internship include mainly access to commercially available, high-performance computer required for computational simulations. Although I do not expect to take significant part in the wet lab research, I am absolutely open to such opportunity, especially considering that I will have taken two Wet Labs courses before the proposed internship start date.\\
+\\
+I expect to be under supervision of Professor Richard M. Murray, Professor of Control \& Dynamical Systems and Bioengineering and under supervision of graduate and/or postgraduate members of his group working on similar tasks.
+	\section*{4. Subsystems}
+This work plan outlines schedule that should lead to accomplishment of the objectives. Plan is only provisional and it might change based on the progress and supervisor\textquotesingle s feedback.\\
+\textbf{Week 1:} Introductory week. Design of the simple deterministic model of artificial cell with focus on sensing and signaling subsystem. Mathematical analysis through methods of control theory and nonlinear dynamics. Preliminary computational simulations.\\ \\ \\
+\textbf{Weeks 2-3:} Computational simulations of design of sensing and signaling pathway. Verification of the mathematical results obtained in Week 1. Input/output analysis of the sensing and signaling pathway model. Implementation of required modifications based on results of simulations. Preliminary perturbation analysis of the sensing and signaling pathway.\\ 
+\textit{Writing and submission of Progress report 1.}\\
+\textbf{Week 4-5:} Design of simple deterministic model of the intracellular gene circuit. Mathematical analysis and computational simulations of design of gene circuit. Verification of the mathematical results obtained in Week 1. Input/output analysis of the regulatory subsystem. Implementation of required modifications based on results of simulations. Perturbation analysis of the transcriptional and translational subsystem.\\ 
+\textbf{Weeks 6-7:} Effect of retroactivity in sensing \& signaling pathway and in transcriptional and translational circuits. Implementation of mechanisms leading to retroactivity attenuation.\\
+\textbf{Week 8:} Influence of competition for limited and shared resources in the artificial cell. Analytical and computational optimization of amount of resources required for proper function of the artificial cell.\\
+\textit{Writing and submission of Progress report 2.}\\
+\textbf{Weeks 8-9:} Analysis and modeling of stochastic effects in transcription, translation and retroactivity attenuation. Analysis of random processes in the frequency domain. If time permits, more thorough analysis of the exocytosis out of artificial cell and intercellular signaling. Final report writing.\\
+\textbf{Week 10:} Finalization of the final report and presentation preparation. Presentation of the achieved results.\\
+
+\bibliographystyle{apalike}
+\begin{thebibliography}{1}
+
+	\bibitem{elani} Elani, Y. Construction of membrane-bound artificial cells using microfluidics: a new frontier in bottom-up synthetic biology. \textit{Biochemical Society Transactions,} 44(3), pp.723-730.  2016.
+	\bibitem{artificial} Murray, R. (2017). \textit{Genetically-Programmed Artificial Cells and Multi-Cellular Machines.} 1st ed. [ebook] Available at: \texttt{http://www.cds.caltech.edu/\textasciitilde murray/wiki/index.php?title=SURF\textunderscore 2017:\textunderscore Genetically\\-Programmed\textunderscore Artificial\textunderscore Cells\textunderscore and\textunderscore Multi-Cellular\textunderscore Machines\&redirect=no}[Accessed 6 Jun. 2017].
+	\bibitem {biofeedback} Del Vecchio, D. and Murray, R. (2015). \textit{Biomolecular feedback systems.} 1st ed. Princeton: Princeton University Press.
+  	\bibitem{synbio} Baldwin, G., Dickinson, R. and Kitney, R. (2015). \textit{Synthetic Biology - A Primer.} 1st ed. London: Imperial College Press.
+	\bibitem{alberts} Alberts, B. (2014). \textit{Essential cell biology.} 3rd ed. New York: Garland Science.
+	\bibitem{strogatz} Strogatz, S. (2015). \textit{Nonlinear dynamics and chaos.} 2nd ed. Boulder: Westview.
+	\bibitem{slotine} Slotine, J. and Li, W. (2005). \textit{Applied nonlinear control.} 1st ed. Taipei: Pearson education Taiwan.
+	\bibitem{bionumbers} Bionumbers.hms.harvard.edu. (2017). \textit{BioNumbers - The Database of Useful Biological Numbers.} [online] Available at: \texttt{http://bionumbers.hms.harvard.edu/} [Accessed 6 Jun. 2017].
+
+\end{thebibliography}
+
+\end{document}
