@@ -21,9 +21,9 @@ SubsystemModelObj.UserData = 'Transport';
 %% A) Diffusion of extracellular Input signal Iex through vesicle membrane and increase in input signal concentration Icell in the vesicle:
 % 1) in -> out
 % Reaction rates: kA = k0*(input - output)
-Sobj_in = addspecies(extracell,'input','InitialAmount',2000);
+Sobj_in = addspecies(extracell,'input','InitialAmount',0);
 Sobj_out = addspecies(ves,'output','InitialAmount',0);
-Pobj_k0 = addparameter(SubsystemModelObj,'k0',0.5e-1);
+Pobj_k0 = addparameter(SubsystemModelObj,'k0',0.5e-2);
 Robj_1 = addreaction(SubsystemModelObj,'extracell.input -> ves.output','ReactionRate','k0 * (input - output)');
 % Robj_1.ReactionRate
 

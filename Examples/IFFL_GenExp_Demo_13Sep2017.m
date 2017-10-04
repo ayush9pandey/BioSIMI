@@ -4,7 +4,7 @@
 % Clear command window, clear workspace variables and close open figures
 clc
 clear
-close all
+% close all
 %% Create Incoherent Feed-Forward Loop (IFFL) circuit in TX-TL modeling toolbox
 % Set up the standard TXTL tubes
 % These load up the RNAP, Ribosome and degradation enzyme concentrations
@@ -47,13 +47,12 @@ GenExp_Subsystem = BioSIMI_make_subsystem(GenExp,'RNAP','protein deGFP*','GenExp
 
 %% Create new subsystem 'FinalSystem' that contains species from connected 'IFFL' and 'GenExp' subsystems
 FinalSystem = BioSIMI_connect_txtl('FinalSystem','int',IFFL_Subsystem,GenExp_Subsystem,'FinalSystem');
-
 % Create new subsystem 'FS' that removes repeated species and the unused output of 'input subsystem'
 % Set up events, parameters, and reactions in the final subsystem 'FS'
 FS = BioSIMI_assemble(FinalSystem,'FS');
 % Simulate final subsystem 'FS' with assembled reactions for (14*60*60) seconds
 SimData = BioSIMI_runsim(FS,14*60*60);
 % Plot time dependences of input (arabinose) and output (protein deGFP*) of interconnection of IFFL and GenExp subsystems
-BioSIMI_plot(FS,SimData);
+BioSIMI_plot(FS,SimData,'RNAP');
 % Create standard TX-TL plots for interconnection of IFFL and GenExp subsystems
 txtl_plot(SimData,FS.ModelObject);

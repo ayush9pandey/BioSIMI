@@ -1,8 +1,6 @@
 %% 20/09/2017 Miroslav Gasparek
 %% Demo of the creation of artificial cell through modular framework 
 %% Serving as a proof-of-concept for creation of modularization framework of TX-TL modeling toolbox
-
-%% Cunrrently issues with dimensional analysis are present due to interconnection with TX-TL objects
 clc;clear;
 % Create SimBiology model object vesicle
 vesicle = BioSIMI_make_vesicle('vesicle')
@@ -39,6 +37,6 @@ BioSIMI_add_subsystem(vesicle,{'int','ext'},DiffOut)
 % that contains connection of all four subsystems subsystems
 FinalSystem = BioSIMI_connect(vesicle,'int',Diff_DP_IFFL,DiffOut,'FinalSystem')
 % Run the simulation of the Final System
-SimData = BioSIMI_runsim(FinalSystem)
+SimData = BioSIMI_runsim(FinalSystem,20)
 % Plot the Input/Output relationship in the Final System
 BioSIMI_plot(FinalSystem,SimData)

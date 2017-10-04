@@ -27,7 +27,7 @@ Sobj_input = addspecies(ves,'input','InitialAmount',5000);
 Sobj_TranP = addspecies(ves,'TranP','InitialAmount',5000);
 Sobj_output = addspecies(extracell,'output','InitialAmount',0);
 
-Pobj_k0 = addparameter(SubsystemModelObj,'k0',0.01);
+Pobj_k0 = addparameter(SubsystemModelObj,'k0',0.05);
 Pobj_k1 = addparameter(SubsystemModelObj,'k1',100);
 
 Robj_1 = addreaction(SubsystemModelObj,'ves.input -> extracell.output','ReactionRate','(k0*TranP*(input-output))/(k1*TranP+abs(input-output))');

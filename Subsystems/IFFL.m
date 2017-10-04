@@ -142,7 +142,7 @@ figure
 plot(t,simdata_InputOutput,'LineWidth',2);
 % xlim([0 20])
 xlabel('Time [s]');
-ylabel('Amount of Species');
+ylabel('Species amounts [nM]');
 title({'Temporal response of output p_C to "in" signal','in isolated IFFL system'});
 legend('input','output p_{C}');
 %}
