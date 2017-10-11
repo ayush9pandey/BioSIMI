@@ -1,0 +1,14 @@
+11 October 2017 Miroslav Gasparek
+*** TO DO LIST FOR BioSIMI MODELING FRAMEWORK ***
+
+1. Enabling modeling of multiple input/multiple output behavior
+
+2. Adding feature allowing for specifying of individual interconnected species (specified by the user)
+
+3. Setting the strength of the interaction between the user-specified interconnected species (i. e. between 0 and 1 to determine the affinity)
+
+4. Creation and simulation of simple metabolic framework allowing for extension of the lifetime of the TX-TL reaction
+
+5. ??Implementation of the Vipul's MCMC alghoritm in the BioSIMI so that it is compatible with TX-TL modeling toolbox?? (TO BE CLARIFIED)
+
+On-going task: debugging, improving robustness and increasing readability of the code
