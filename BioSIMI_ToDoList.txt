@@ -11,4 +11,4 @@
 
 5. ??Implementation of the Vipul's MCMC alghoritm in the BioSIMI so that it is compatible with TX-TL modeling toolbox?? (TO BE CLARIFIED)
 
-On-going task: debugging, improving robustness and increasing readability of the code
+On-going task: debugging, improving robustness and increasing readability of the code.
