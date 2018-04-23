@@ -82,18 +82,19 @@ Robj_8 = addreaction(SubsystemModelObj,'C4 -> Xp + E','ReactionRate','k8f*C4');
 % SubsystemModelObj.species
 
 %% Simulation
-%{
+% % {
+% [t,simdata,names] = sbiosimulate(SubsystemModelObj);
+% % }
 [t,simdata,names] = sbiosimulate(SubsystemModelObj);
-%}
 %% Plotting
-%{
+
 simdata_InputOutput = simdata(:,[1 8]);
 figure
 plot(t,simdata_InputOutput,'LineWidth',2);
-% xlim([0 20])
+xlim([0 20])
 xlabel('Time [s]');
 ylabel('Amount of Species');
 title({'Temporal response of output to input signal','in isolated Double Phosphorylation system'});
 legend('input','output');
-%}
+
 end

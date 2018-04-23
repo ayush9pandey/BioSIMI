@@ -1,4 +1,4 @@
-%% 07/09/2017 Miroslav Gasparek
+%%% 07/09/2017 Miroslav Gasparek
 % Definition of the function that initializes subsystem with multiple inputs
 % from existing SimBiology model that can be accessed in the library of the
 % subsystems accessed through function 'BioSIMI_SearchSubsystemLibrary'
@@ -10,7 +10,7 @@ function Subsystem = BioSIMI_make_subsystem(sub_name,input,output,subsystem_name
                 % Code used if inserted subsystem is created from library of
                 % subsystems created. Subsystem is then inserted as string
                 % or char array
-                if (strcmp(string(class(sub_name)),"string") || strcmp(string(class(sub_name)),"char"))
+                if (strcmp(string(class(sub_name)),'string') || strcmp(string(class(sub_name)),'char'))
                     % Search the library of subsystems
                     SubsystemModelObj = BioSIMI_SearchSubsystemLibrary(sub_name);
                     % Create object Subsystem of class subsystem and assign
@@ -29,7 +29,7 @@ function Subsystem = BioSIMI_make_subsystem(sub_name,input,output,subsystem_name
                     Subsystem.SimSettings = getconfigset(SubsystemModelObj);
                 % Code used if inserted subsystem is created in TX-TL
                 % Modeling toolbox. Subsystem is inserted as Model Object
-                elseif (strcmp(string(class(sub_name)),"SimBiology.Model"))
+                elseif (strcmp(string(class(sub_name)),'SimBiology.Model'))
                     SubsystemModelObj = sub_name;
                     Subsystem = subsystem;
                     Subsystem.ModelObject = SubsystemModelObj;

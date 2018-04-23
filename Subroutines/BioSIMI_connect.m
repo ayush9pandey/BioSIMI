@@ -1,4 +1,4 @@
-%% 29/08/2017 Miroslav Gasparek
+%%% 29/08/2017 Miroslav Gasparek
 % Definition of a function that connects two subsystems by replacing the output(s)
 % of subsystem(s) by input(s) of subsystem(s) that these specified subsystems are connected to 
 
@@ -15,7 +15,7 @@ function Subsystem = BioSIMI_connect(target_obj,compartment_name,subsystems_in,s
         % Make distinction between number of inputs provided for one input
         % and multiple inputs
 
-%% Execution for single input subsystem
+%%% Execution for single input subsystem
     if (size(subsystems_in,1) == 1 && size(subsystems_in,2) == 1 && size(subsystem_out.Input,1) == 1 && size(subsystem_out.Input,2) == 1)
         
         % Define resulting system as object of class 'subsystem'
@@ -41,6 +41,8 @@ function Subsystem = BioSIMI_connect(target_obj,compartment_name,subsystems_in,s
             if strcmp(subsystems_in.Output.Name,target_obj.Species(i).Name)
                 sub1_out = i;
                 [components,usages] = findUsages(target_obj.Species(i));
+                usages
+                components
             elseif strcmp(subsystem_out.Input.Name,target_obj.Species(i).Name)
                 sub2_in = i;
             end
@@ -127,7 +129,7 @@ function Subsystem = BioSIMI_connect(target_obj,compartment_name,subsystems_in,s
         % Name the component subsystems
         Subsystem.Components(1).Name = subsystems_in.Name;
         Subsystem.Components(2).Name = subsystem_out.Name;
-%% Exection for multiple input subsystems
+%%% Exection for multiple input subsystems
     elseif (size(subsystems_in,1) == 1 && size(subsystems_in,2) ~= 1 && size(subsystem_out.Input,1) == 1 && size(subsystem_out.Input,2) ~= 1 && size(subsystems_in,2) == size(subsystem_out.Input,2))
         % Define resulting system as object of class 'subsystem'
         Subsystem = subsystem;
@@ -150,6 +152,10 @@ function Subsystem = BioSIMI_connect(target_obj,compartment_name,subsystems_in,s
                 if strcmp(subsystems_in{q}.Output.Name,target_obj.Species(i).Name)
                     sub1_out(q) = i;
                     [components{q},usages{q}] = findUsages(target_obj.Species(i));
+%                     celldisp(usages)
+                    usages{1}.Usage(3)
+%                     target_obj.Species(i)
+                    
                 end
             end
             for i = 1:size(target_obj.Species,1)

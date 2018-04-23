@@ -132,18 +132,18 @@ Robj_18 = addreaction(SubsystemModelObj,'out -> null','ReactionRate','k18f*out')
 % Robj_18.ReactionRate
 
 %% Simulation
-%{
+%%%{
 [t,simdata,names] = sbiosimulate(SubsystemModelObj);
-%}
+%%%}
 %% Plotting
-%{
+%%{
 simdata_InputOutput = simdata(:,[1 16]);
 figure
 plot(t,simdata_InputOutput,'LineWidth',2);
-% xlim([0 20])
+xlim([0 20])
 xlabel('Time [s]');
 ylabel('Species amounts [nM]');
 title({'Temporal response of output p_C to "in" signal','in isolated IFFL system'});
 legend('input','output p_{C}');
-%}
+%%}
 end

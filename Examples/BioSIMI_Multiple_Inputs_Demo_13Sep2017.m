@@ -1,9 +1,9 @@
-%% 13/09/2017 Miroslav Gasparek
-%% Demo of interconnection of multiple-input subsystems through BioSIMI modular framework 
-%% Serves as a proof-of-concept for creation of modularization framework of TX-TL modeling toolbox
+%%% 13/09/2017 Miroslav Gasparek
+%%% Demo of interconnection of multiple-input subsystems through BioSIMI modular framework 
+%%% Serves as a proof-of-concept for creation of modularization framework of TX-TL modeling toolbox
 % Clear command window, clear workspace variables and close open figures
-clc
-clear
+% clc
+% clear
 close all
 % Create SimBiology model object vesicle
 vesicle = BioSIMI_make_vesicle('vesicle');

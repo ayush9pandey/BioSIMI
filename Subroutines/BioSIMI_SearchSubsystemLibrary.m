@@ -1,4 +1,4 @@
-%% 27/08/2017 Miroslav Gasparek
+%%% 27/08/2017 Miroslav Gasparek
 % Library of Simbiology model subsystems that can be initialized by
 % 'txtl_make_subsystem' functions
 
@@ -25,7 +25,8 @@ subsystems_list = {
 };
     for i = 1:size(subsystems_list,2)
         if strcmp(selected_subsystem_name,subsystems_list(i))
-            Chosen_Subsystem = eval(string(subsystems_list(i)));
+%             Chosen_Subsystem = eval(string(subsystems_list(i)));
+            Chosen_Subsystem = eval(char(cellstr(subsystems_list(i))));
         end
     end
 end
